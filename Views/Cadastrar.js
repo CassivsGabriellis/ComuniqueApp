@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, TouchableOpacity, TextInput, Pressable, Image} f
 import Button1 from "../componentes/Button1";
 import { cores } from "../estilos";
 import CadastrarStyle from "../estilos/Views_Estilos/CadastrarStyle";
+
+
 export default class Cadastrar extends React.Component{
     constructor(props){
         super(props);
@@ -92,7 +94,7 @@ export default class Cadastrar extends React.Component{
                 />
             </View>
             <View style={styles.CadastrarStyle.viewButtons}>
-            <Button1 width={220} height={'60%'} borderRadius={20} fontSize={20}  navegacao='Logar'  texto='Cadastrar' color1={cores.buttonGradientColor1} color2={cores.buttonGradientColor2}/>
+            <Button1 width={220} height={'60%'} borderRadius={20} fontSize={20} tipoNavegacao='navigate'  navegacao='Logar'  texto='Cadastrar' color1={cores.buttonGradientColor1} color2={cores.buttonGradientColor2}/>
             <Text>
                 {'\n'}
             </Text>
