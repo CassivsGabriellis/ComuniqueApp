@@ -1,51 +1,84 @@
 import React from "react";
-import { View,  Image } from "react-native";
+import { Animated, View,  Image, StyleSheet } from "react-native";
 import Atividades from "../componentes/Atividades";
 import ImagePerfil from "../componentes/ImagePerfil";
-
-
+import PaginaUsuarioStyle from "../estilos/Views_Estilos/PaginaUsuarioStyle";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { cores } from "../estilos";
+import GestureRecognizer from 'react-native-swipe-gestures';
+import swipeConfig from "../configs/swipeConfig";
+const properties ={
+    with:350,
+    height:105,
+    borderRadius:35,
+    iconType:'barComplete',
+    barWidth:'40%',
+    barHeight:'15%',
+    textColor:'black',
+    fontSize:20,
+    imageWidth:140,
+    imageHeight:140,
+    imageLeft:'50%',
+    imageTop:-40,
+}
 export default class PaginaUsuario extends React.Component{
 
 constructor(props){
-    
+
     super(props);
-    this.setState={
-
+    this.state={
+       
     }
-}
-
+}  
     render(){
-        return (
-            <View style={{width:'100%', height:'100%', flexDirection:'column', backgroundColor:'#277BC0', alignItems:'center'}}>
+      
+            return(
+            
+                <GestureRecognizer
+                onSwipeLeft={(state)=>this.props.navigation.navigate('Comunicacao')}
+                config={swipeConfig}
+                style={style.PaginaUsuarioStyle.container}
+                >
+          
                 
-                <View style={{width:'100%', height:'25%', flexDirection:'row', justifyContent:'center', alignItems:'center', backgroundColor:'white'
-            ,  borderBottomRightRadius:50, borderBottomLeftRadius:50,
-            
-            
-            }}>
-                <View style={{alignItems:'center', top:10}}>
+                <View style={style.PaginaUsuarioStyle.menuSuperior}>
+                <View style={style.PaginaUsuarioStyle.imageMenuContainer}>
                 <ImagePerfil shadow='true' width={80} height={80} shadowTop={10} shadowColor='#5C5C5C' shadowOpacity={0.2} text='Felipe' fontSize={15} 
                 imageUrl={require('../assets/PerfilImage.jpg')}
                 />
                 
                 </View>
                
-                <Image  source={require('../assets/settingsIcon.png')} style={{position:'absolute', left:'90%', top:40}}/>
-                <Image source={require('../assets/IconReturn_PaginaUsuario.png')} style={{position:'absolute', left:'5%', top:40}}/>
+               
                 
             </View>
-            <View style={{height:'50%', justifyContent:'space-between', top:'7%'}}>
-                <View>
-                <Atividades width={350} height={100} borderRadius={35} color='#7BDAAC' completo='80%' image={require('../assets/Woman_meditates_under_a_rainbow.png')} text='Jogos' fontSize={20}/>
+            
+            
+                
+            <View style={style.PaginaUsuarioStyle.containerAtividades}>
+            <Atividades navigate='Jogos' width={properties.with} height={properties.height} borderRadius={properties.borderRadius}  iconType={properties.iconType} 
+                 barWidth={properties.barWidth}  barHeight={properties.barHeight} color='#7BDAAC'
+                    completo='80%' image={require('../assets/Woman_meditates_under_a_rainbow.png')} text='Jogos'   textColor={properties.textColor}
+                    fontSize={properties.fontSize} imageWidth={properties.imageWidth} imageHeight={properties.imageHeight} imageLeft={properties.imageLeft} imageTop={properties.imageTop}/>
+                 <Atividades width={properties.with} height={properties.height} borderRadius={properties.borderRadius}  iconType={properties.iconType} 
+                 barWidth={properties.barWidth} barHeight={properties.barHeight}  color='#E25959'
+                    completo='30%' image={require('../assets/Man_with_laptop_uploading_files_to_cloud.png')} text='Cronograma'   textColor={properties.textColor}
+                    fontSize={properties.fontSize}  imageWidth={properties.imageWidth} imageHeight={properties.imageHeight} imageLeft={properties.imageLeft} imageTop={properties.imageTop}/>
+                    <Atividades width={properties.with} height={properties.height} borderRadius={properties.borderRadius}  iconType={properties.iconType} 
+                 barWidth={properties.barWidth} barHeight={properties.barHeight} 
+                    completo='60%' image={require('../assets/Man_erases_the_inscription_from_the_board.png')} text='Estudo Diario' color='#EFE378'  textColor={properties.textColor}
+                    fontSize={properties.fontSize}   imageWidth={properties.imageWidth} imageHeight={properties.imageHeight} imageLeft={properties.imageLeft} imageTop={properties.imageTop}/>
                 </View>
-                <View >
-                <Atividades width={350} height={100} borderRadius={35} color='#D23535' completo='30%' image={require('../assets/Man_with_laptop_uploading_files_to_cloud.png')}  fontSize={20}/>
-                </View>
-                <View >
-                <Atividades width={350} height={100} borderRadius={35} color='#EFE378' completo='60%' image={require('../assets/Man_erases_the_inscription_from_the_board.png')}  text='Estudo Diario' fontSize={20}/>
-                </View>
-                </View>
-            </View>
+
+                </GestureRecognizer>
+           
         );
     }
 }
+
+const style = StyleSheet.create({
+    PaginaUsuarioStyle
+
+
+
+})
